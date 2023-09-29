@@ -10,9 +10,7 @@ class LawyerDocument extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Document Generation'),
       ),
-      body: LogoutButton(
-        
-      ),
+      body: LogoutButton(),
     );
   }
 }
