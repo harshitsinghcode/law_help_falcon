@@ -68,42 +68,47 @@ class _CaseListState extends State<CaseList> {
         final ipc = caseData['ipcSections'] ?? 'N/A';
         final lawyer = caseData['lawyerName'] ?? 'N/A';
         final judge = caseData['judgeName'] ?? 'N/A';
-
+        final caseNumber = caseData['caseNumber'] ?? 'N/A';
         final caseId = cases[index].id;
         return Card(
           margin: const EdgeInsets.all(8.0),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20.0),
           ),
-          child: Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: ExpansionTileCard(
-              key: cardA,
-              leading: const CircleAvatar(child: Text('A')),
-              title: Text(clientName),
-              subtitle: Text(nextHearingDate),
-              children: <Widget>[
-                const Divider(
-                  thickness: 1.0,
-                  height: 1.0,
-                ),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16.0,
-                      vertical: 8.0,
-                    ),
-                    child: Text('Client Name: $clientName\n'
+          child: InkWell(
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: ExpansionTileCard(
+                leading: CircleAvatar(child: Text(caseNumber)),
+                title: Text(clientName),
+                subtitle: Text(nextHearingDate),
+                children: <Widget>[
+                  const Divider(
+                    thickness: 1.0,
+                    height: 1.0,
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0,
+                        vertical: 8.0,
+                      ),
+                      child: Text(
+                        'Client Name: $clientName\n'
                         'Next Hearing Date: $nextHearingDate\n'
                         'IPC Section: $ipc\n'
                         'Case Status: $caseStatus\n'
                         'Lawyer: $lawyer\n'
-                        'Judge: $judge\n'
-                        'Case ID: $caseId\n'),
+                        'Judge: $judge',
+                        style: const TextStyle(
+                          fontSize: 16.0,
+                        ),
+                      ),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         );
