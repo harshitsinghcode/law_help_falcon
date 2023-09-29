@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:law_help/screens/stakeholders/undertrial/ut_chat.dart';
 import 'package:law_help/screens/stakeholders/undertrial/ut_home.dart';
-import 'package:law_help/screens/stakeholders/undertrial/ut_map.dart';
+import 'package:law_help/screens/stakeholders/undertrial/ut%20map/ut_map.dart';
 import 'package:law_help/screens/stakeholders/undertrial/ut_support.dart';
 
 import '../../../models/screen_model.dart';
