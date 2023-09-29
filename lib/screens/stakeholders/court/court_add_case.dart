@@ -89,7 +89,9 @@ class _CourtAddCaseState extends State<CourtAddCase> {
             _nextHearingDateController.clear();
             _selectedDate = null;
           }
-        } catch (error) {}
+        } catch (error) {
+          ;
+        }
       }
     }
   }
