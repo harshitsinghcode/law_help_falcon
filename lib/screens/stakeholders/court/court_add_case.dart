@@ -18,6 +18,7 @@ class _CourtAddCaseState extends State<CourtAddCase> {
   final TextEditingController _clientEmailController = TextEditingController();
   final TextEditingController _lawyerEmailController = TextEditingController();
   final TextEditingController _clientNameController = TextEditingController();
+  final TextEditingController _caseNumberController = TextEditingController();
   final TextEditingController _ipcSectionsController = TextEditingController();
   final TextEditingController _nextHearingDateController =
       TextEditingController();
@@ -52,6 +53,7 @@ class _CourtAddCaseState extends State<CourtAddCase> {
         final String courtId = user.uid;
         final String lawyerEmail = _lawyerEmailController.text.trim();
         final String clientEmail = _clientEmailController.text.trim();
+        final String caseNumber = _caseNumberController.text.trim();
         final String ipcSections = _ipcSectionsController.text.trim();
         final String nextHearingDate = _nextHearingDateController.text.trim();
         final String clientName = _clientNameController.text.trim();
@@ -74,6 +76,7 @@ class _CourtAddCaseState extends State<CourtAddCase> {
             await FirebaseFirestore.instance.collection('cases').add({
               'judgeName': judgeName,
               'courtId': courtId,
+              'caseNumber': caseNumber,
               'clientEmail': clientEmail,
               'lawyerEmail': lawyerEmail,
               'clientName': clientName,
@@ -169,7 +172,7 @@ class _CourtAddCaseState extends State<CourtAddCase> {
                     TextFormField(
                       controller: _clientEmailController,
                       decoration: InputDecoration(
-                          labelText: 'Client Email',
+                          labelText: 'Undertrial Email',
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                               width: _clientEmailFocused ? 3 : 1,
@@ -182,6 +185,39 @@ class _CourtAddCaseState extends State<CourtAddCase> {
                           icon: const Icon(
                             Icons.email,
                             color: Colors.lightBlueAccent,
+                          )),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter the client\'s email';
+                        }
+                        return null;
+                      },
+                      onTap: () {
+                        setState(() {
+                          _clientEmailFocused = true;
+                          _clientNameFocused = false;
+                          _ipcSectionsFocused = false;
+                          _nextHearingDateFocused = false;
+                        });
+                      },
+                    ),
+                    const SizedBox(height: 16),
+                    TextFormField(
+                      controller: _caseNumberController,
+                      decoration: InputDecoration(
+                          labelText: 'Case Number',
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              width: _clientEmailFocused ? 3 : 1,
+                              color: Colors.pink,
+                            ),
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                          filled: true,
+                          fillColor: Colors.grey[900],
+                          icon: const Icon(
+                            Icons.numbers,
+                            color: Colors.pink,
                           )),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
@@ -236,7 +272,7 @@ class _CourtAddCaseState extends State<CourtAddCase> {
                     TextFormField(
                       controller: _clientNameController,
                       decoration: InputDecoration(
-                        labelText: 'Client Name',
+                        labelText: 'Undertrial Name',
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
                             width: _clientNameFocused ? 3 : 1,
@@ -250,7 +286,7 @@ class _CourtAddCaseState extends State<CourtAddCase> {
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please enter the client\'s name';
+                          return 'Please enter the Undertrial\'s name';
                         }
                         return null;
                       },
