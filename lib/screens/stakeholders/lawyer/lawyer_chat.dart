@@ -3,6 +3,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import '../../../universal chat/chat.dart';
 // import 'package:law/chat/lawyer_client_chat.dart';
 
 class LawyerChat extends StatefulWidget {
@@ -35,17 +37,17 @@ class _LawyerChatState extends State<LawyerChat> {
     });
   }
 
-  void _onCaseTap(String caseId) {
-    final caseData = cases.firstWhere((element) => element.id == caseId);
-    // Navigator.of(context).push(
-    //   MaterialPageRoute(
-    //     builder: (context) => LawyerClientChat(
-    //       recvEmail: caseData['clientEmail'],
-    //       recvName: caseData['clientName'],
-    //       senderEmail: currentUser.email!,
-    //     ),
-    //   ),
-    // );
+  void _onCaseTap(String caseId, String clientEmail, String clientName) {
+    // final caseData = cases.firstWhere((element) => element.id == caseId);
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => LawyerClientChat(
+          recvEmail: clientEmail,
+          recvName: clientName,
+          senderEmail: currentUser.email!,
+        ),
+      ),
+    );
   }
 
   @override
@@ -69,6 +71,7 @@ class _LawyerChatState extends State<LawyerChat> {
               itemBuilder: (context, index) {
                 final caseData = cases[index].data() as Map<String, dynamic>;
                 final clientName = caseData['clientName'] as String;
+                final clientEmail = caseData['clientEmail'] as String;
                 final caseId = cases[index].id;
                 final caseNumber = caseData['caseNumber'] as String;
                 return Card(
@@ -80,7 +83,7 @@ class _LawyerChatState extends State<LawyerChat> {
                   ),
                   child: ListTile(
                     onTap: () {
-                      _onCaseTap(caseId);
+                      _onCaseTap(caseId, clientEmail, clientName);
                     },
                     leading: const CircleAvatar(
                       backgroundColor: Colors.blue,
