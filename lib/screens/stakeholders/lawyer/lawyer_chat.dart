@@ -38,7 +38,6 @@ class _LawyerChatState extends State<LawyerChat> {
   }
 
   void _onCaseTap(String caseId, String clientEmail, String clientName) {
-    // final caseData = cases.firstWhere((element) => element.id == caseId);
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => LawyerClientChat(

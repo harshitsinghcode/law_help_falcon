@@ -35,10 +35,6 @@ class _UTChatState extends State<UTChat> {
 
   Future<void> _onCaseTap(
       String caseId, String lawyerEmail, String lawyerName) async {
-    // You can handle the case tap action here.
-    // For example, you can navigate to a chat screen with the lawyer.
-    // You can use the lawyerEmail to identify the lawyer to chat with.
-    // Example navigation code:
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => LawyerClientChat(
