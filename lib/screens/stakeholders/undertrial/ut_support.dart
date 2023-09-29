@@ -10,9 +10,7 @@ class UTSupport extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Title'),
       ),
-      body: Container(
-        child: LogoutButton(),
-      ),
+      body: LogoutButton(),
     );
   }
 }
