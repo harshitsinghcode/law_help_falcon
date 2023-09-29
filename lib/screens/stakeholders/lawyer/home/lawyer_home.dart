@@ -50,14 +50,15 @@ class DashboardHeader extends StatefulWidget {
 }
 
 class _DashboardHeaderState extends State<DashboardHeader> {
-  late String lawyerId;
+  late String lawyerEmail;
   int totalCases = 0;
+
   @override
   void initState() {
     super.initState();
     final user = FirebaseAuth.instance.currentUser;
     if (user != null) {
-      lawyerId = user.uid;
+      lawyerEmail = user.email!;
       fetchLawyerIdAndTotalCases();
     }
   }
@@ -65,7 +66,7 @@ class _DashboardHeaderState extends State<DashboardHeader> {
   Future<void> fetchLawyerIdAndTotalCases() async {
     final casesQuery = await FirebaseFirestore.instance
         .collection('cases')
-        .where('lawyerId', isEqualTo: lawyerId)
+        .where('lawyerEmail', isEqualTo: lawyerEmail)
         .get();
     setState(() {
       totalCases = casesQuery.docs.length;
@@ -80,6 +81,7 @@ class _DashboardHeaderState extends State<DashboardHeader> {
         builder: (context) => CaseListScreen(
           showClosed: showClosed,
           showOpen: showOpen,
+          // lawyerEmail: lawyerEmail,
         ),
       ),
     );

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:law_help/screens/stakeholders/court/court_nav.dart';
 import 'package:law_help/screens/stakeholders/lawyer/lawyer_nav.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../models/user_role.dart';
@@ -68,6 +69,13 @@ class _LoginPageState extends State<LoginPage> {
               builder: (context) => const LawyerScreen(),
             ),
           );
+        } else if (_userRole == UserRole.courtOfficial) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const CourtScreen(),
+            ),
+          );
         }
       }
     }
@@ -114,6 +122,11 @@ class _LoginPageState extends State<LoginPage> {
             _prefs.setBool('isLoggedIn', true);
             Navigator.pushReplacement(context,
                 MaterialPageRoute(builder: (context) => const LawyerScreen()));
+          } else if (_userRole == UserRole.courtOfficial) {
+            _saveUserDataToPrefs(uid, email, identifier);
+            _prefs.setBool('isLoggedIn', true);
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) => const CourtScreen()));
           }
 
           setState(() {
@@ -155,6 +168,9 @@ class _LoginPageState extends State<LoginPage> {
       } else if (_userRole == UserRole.lawyer) {
         Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) => const LawyerScreen()));
+      } else if (_userRole == UserRole.courtOfficial) {
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => const CourtScreen()));
       }
       // ignore: unused_catch_clause
     } on FirebaseAuthException catch (e) {

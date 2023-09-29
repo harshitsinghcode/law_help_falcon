@@ -124,7 +124,8 @@ class CaseDetailScreen extends StatelessWidget {
                     caseData['lawyerName'] ?? 'N/A',
                   ),
                   const SizedBox(height: 10),
-                  _buildSectionInfoCard("Judge:", "Jane Smith"),
+                  _buildSectionInfoCard(
+                      "Judge:", caseData['judgeName'] ?? 'N/A'),
                   const SizedBox(height: 10),
                   _buildSectionInfoCard(
                     "Next Hearing:",

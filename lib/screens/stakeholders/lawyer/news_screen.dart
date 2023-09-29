@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:law_help/widgets/buttons/logout_button.dart';
 
 class LawyerNews extends StatelessWidget {
   const LawyerNews({Key? key}) : super(key: key);
@@ -9,7 +10,7 @@ class LawyerNews extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Title'),
       ),
-      body: Container(),
+      body: LogoutButton(),
     );
   }
 }
