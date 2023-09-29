@@ -72,18 +72,45 @@ class LoginUI extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Image.asset(
-                          'assets/images/family.png',
+                          'assets/images/justice-scale.png',
                           width: 65,
                           height: 65,
                         ),
-                        const Text(
-                          'न्याय Sahaya',
-                          style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                        RichText(
+                          text: const TextSpan(
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            children: <TextSpan>[
+                              TextSpan(
+                                text: 'न्याय ',
+                                style: TextStyle(
+                                    color: Colors.lightBlueAccent,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 26),
+                              ),
+                              TextSpan(
+                                text: 'Sa',
+                                style: TextStyle(
+                                  color: Colors.orange,
+                                ),
+                              ),
+                              TextSpan(
+                                text: 'ha',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
+                              TextSpan(
+                                text: 'ya',
+                                style: TextStyle(
+                                  color: Colors.green,
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
+                        )
                       ],
                     ),
                   ),
@@ -136,7 +163,7 @@ class LoginUI extends StatelessWidget {
                         'Court Official',
                         style: TextStyle(
                           fontSize: 18,
-                          fontWeight: FontWeight.w600,
+                          fontWeight: FontWeight.bold,
                           color: userRole == UserRole.courtOfficial
                               ? Colors.blueAccent
                               : Colors.grey[600],
