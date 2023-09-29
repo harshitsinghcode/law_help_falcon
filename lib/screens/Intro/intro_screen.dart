@@ -110,7 +110,7 @@ class _IntroScreenState extends State<IntroScreen> {
                       color: Colors.white),
                 ),
                 Text(
-                  "न्यायSahaya",
+                  "न्याय Sahaya",
                   style: TextStyle(
                       fontSize: 32,
                       fontWeight: FontWeight.bold,

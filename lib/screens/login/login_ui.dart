@@ -244,18 +244,22 @@ class LoginUI extends StatelessWidget {
 
   Widget _buildTextFormField(TextEditingController controller, String labelText,
       {bool isPassword = false}) {
-    return TextFormField(
-      controller: controller,
-      style: const TextStyle(color: Colors.white),
-      decoration: InputDecoration(
-        labelText: labelText,
-        filled: true,
-        fillColor: Colors.grey[800],
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+          horizontal: 16.0), 
+      child: TextFormField(
+        controller: controller,
+        style: const TextStyle(color: Colors.white),
+        decoration: InputDecoration(
+          labelText: labelText,
+          filled: true,
+          fillColor: Colors.grey[800],
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20.0),
+          ),
         ),
+        obscureText: isPassword,
       ),
-      obscureText: isPassword,
     );
   }
 }
