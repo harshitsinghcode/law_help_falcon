@@ -124,7 +124,10 @@ class _CourtAddCaseState extends State<CourtAddCase> {
           IconButton(
             icon: const Icon(Icons.logout),
             onPressed: () {
-              LogoutButton();
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => LogoutButton()),
+              );
             },
           ),
         ],
