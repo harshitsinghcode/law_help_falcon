@@ -140,7 +140,7 @@ class _CaseListState extends State<CaseList> {
                                 color: Colors.white,
                               ),
                             ),
-                            TextSpan(text: '$caseStatus\n'),
+                            TextSpan(text: 'Ongoing\n'),
                             const TextSpan(
                               text: '• ',
                             ),

@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -6,10 +8,29 @@ import 'cardScreens/pray.dart';
 import 'cardScreens/bailApp.dart';
 import '../../login/login_method.dart';
 
-class LawyerDocument extends StatelessWidget {
-  LawyerDocument({Key? key}) : super(key: key);
+class LawyerDocument extends StatefulWidget {
+  const LawyerDocument({Key? key}) : super(key: key);
 
+  @override
+  _LawyerDocumentState createState() => _LawyerDocumentState();
+}
+
+class _LawyerDocumentState extends State<LawyerDocument> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  bool _isVisible = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _startDelayedDisplay();
+  }
+
+  void _startDelayedDisplay() async {
+    await Future.delayed(const Duration(milliseconds: 300));
+    setState(() {
+      _isVisible = true;
+    });
+  }
 
   void _logout(BuildContext context) async {
     await _auth.signOut();
@@ -38,26 +59,71 @@ class LawyerDocument extends StatelessWidget {
           ),
         ],
       ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(18.0),
-          child: Column(
-            children: <Widget>[
-              _buildCard(context, 'Bail Generation System',
-                  'Ease of bail generation for the  lawyers'),
-              SizedBox(height: 20.0), // Add some spacing
-              _buildCard(context, 'Vakalatnama Generator',
-                  'Vakalatnama generation for start of case '),
-              SizedBox(height: 20.0), // Add some spacing
-              _buildCard(
-                context,
-                'Prayer Generator',
-                'Prayer generator for end-case proceedings',
+      body: Stack(
+        children: [
+          Column(
+            children: [
+              Container(
+                height: 150,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Colors.black.withOpacity(0.6),
+                      Colors.grey[800]!.withOpacity(0.6),
+                    ],
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                  ),
+                ),
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'assets/images/stamp.png',
+                        width: 100,
+                        height: 100,
+                        fit: BoxFit.contain,
+                      ),
+                      const SizedBox(height: 10),
+                      const Text(
+                        'Document Generation',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(18.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    _buildCard(context, 'Bail Generation System',
+                        'Ease of bail generation for the lawyers', 1),
+                    const SizedBox(height: 20.0),
+                    _buildCard(context, 'Vakalatnama Generator',
+                        'Vakalatnama generation for the start of the case', 2),
+                    const SizedBox(height: 20.0),
+                    _buildCard(
+                      context,
+                      'Prayer Generator',
+                      'Prayer generator for end-case proceedings',
+                      3,
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
-        ),
+        ],
       ),
+      backgroundColor: Colors.grey[800],
     );
   }
 
@@ -65,32 +131,53 @@ class LawyerDocument extends StatelessWidget {
     if (cardTitle == 'Bail Generation System') {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => BailGenerationPage()),
+        MaterialPageRoute(builder: (context) => const BailGenerationPage()),
       );
     } else if (cardTitle == 'Vakalatnama Generator') {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => VakalatnamaGeneratorPage()),
+        MaterialPageRoute(
+            builder: (context) => const VakalatnamaGeneratorPage()),
       );
     } else if (cardTitle == 'Prayer Generator') {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => PrayerGeneratorPage()),
+        MaterialPageRoute(builder: (context) => const PrayerGeneratorPage()),
       );
-    } else {
-      // Handle other cards if needed
-    }
+    } else {}
   }
 
-  Widget _buildCard(BuildContext context, String cardTitle, String subtitle) {
-    return GestureDetector(
-      onTap: () {
-        _handleCardTap(context, cardTitle);
-      },
-      child: Container(
-        height: 200.0, // Set a fixed height for the cards
-        child: Card(
-          elevation: 5,
+  Widget _buildCard(
+      BuildContext context, String cardTitle, String subtitle, int index) {
+    return AnimatedOpacity(
+      opacity: _isVisible ? 1.0 : 0.0,
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.easeIn,
+      child: GestureDetector(
+        onTap: () {
+          _handleCardTap(context, cardTitle);
+        },
+        child: Container(
+          height: 130.0,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Colors.black.withOpacity(0.8),
+                Colors.grey[800]!.withOpacity(0.8),
+              ],
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+            ),
+            borderRadius: BorderRadius.circular(15.0),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.3),
+                blurRadius: 10,
+                spreadRadius: 2,
+                offset: const Offset(0, 5),
+              ),
+            ],
+          ),
           child: Padding(
             padding: const EdgeInsets.all(18.0),
             child: Column(
@@ -99,13 +186,20 @@ class LawyerDocument extends StatelessWidget {
               children: [
                 Text(
                   cardTitle,
-                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(height: 10.0),
+                const SizedBox(height: 10.0),
                 Text(
                   subtitle,
-                  style: TextStyle(fontSize: 14.0, color: Colors.grey),
+                  style: const TextStyle(
+                    fontSize: 14.0,
+                    color: Colors.white,
+                  ),
                   textAlign: TextAlign.center,
                 ),
               ],
