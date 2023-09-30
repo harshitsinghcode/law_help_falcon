@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:law_help/screens/stakeholders/court/court_add_case.dart';
 import 'package:law_help/screens/stakeholders/court/court_home.dart';
-import 'package:law_help/screens/stakeholders/lawyer/lawyer_chat.dart';
+import 'package:law_help/screens/stakeholders/court/court_DCM.dart';
 import 'package:law_help/screens/stakeholders/lawyer/lawyer_doc.dart';
 import 'package:law_help/screens/stakeholders/lawyer/news_screen.dart';
 
@@ -31,12 +31,15 @@ class _CourtScreenState extends State<CourtScreen> {
   int _selectedIndex = 0;
 
   static final List<ScreenModel> screens = [
-    ScreenModel(screen: const CourtHome(), icon: Icons.home, text: "Home"),
-    ScreenModel(screen: const LawyerChat(), icon: Icons.chat, text: "Chat"),
+    ScreenModel(screen: CourtHome(), icon: Icons.home, text: "Home"),
+    ScreenModel(
+        screen: const DocumentRepo(), icon: Icons.pending, text: "Manage"),
     ScreenModel(
         screen: const LawyerNews(), icon: Icons.read_more, text: "News"),
     ScreenModel(
-        screen: const CourtAddCase(), icon: Icons.add, text: "Add Case"),
+        screen: const CourtAddCase(),
+        icon: Icons.document_scanner_sharp,
+        text: "Add Case"),
   ];
 
   @override
@@ -58,7 +61,7 @@ class _CourtScreenState extends State<CourtScreen> {
                 selectedColor: Colors.yellow,
               ),
               DotNavigationBarItem(
-                icon: const Icon(Icons.chat),
+                icon: const Icon(Icons.edit_document),
                 selectedColor: Colors.yellow,
               ),
               DotNavigationBarItem(
