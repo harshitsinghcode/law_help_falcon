@@ -142,7 +142,7 @@ class _LawyerDocumentState extends State<LawyerDocument> {
       BuildContext context, String cardTitle, String subtitle, int index) {
     return AnimatedOpacity(
       opacity: _isVisible ? 1.0 : 0.0,
-      duration: const Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 300),
       curve: Curves.easeIn,
       child: GestureDetector(
         onTap: () {
