@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:law_help/widgets/buttons/logout_button.dart';
 
+import 'support screens/vocational/unnati.dart';
+
 class UTSupport extends StatelessWidget {
   const UTSupport({super.key});
 
@@ -78,14 +80,14 @@ class UTSupport extends StatelessWidget {
                     description: 'Explore vocational support services',
                     iconPath: 'assets/images/3526220.png',
                     onPressed: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) {
-                      //       return VocationalSupportScreen();
-                      //     },
-                      //   ),
-                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return VocationalSupportScreen();
+                          },
+                        ),
+                      );
                     },
                     gradientColors: const [Colors.purple, Colors.deepPurple],
                   ),
