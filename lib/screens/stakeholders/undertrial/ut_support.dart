@@ -93,8 +93,6 @@ class UTSupport extends StatelessWidget {
                     gradientColors: const [Colors.purple, Colors.deepPurple],
                   ),
                   const SizedBox(height: 20),
-                  LogoutButton(),
-                  const SizedBox(height: 20),
                   SupportOptionCard(
                     title: 'Mental Health Support',
                     description: 'Access mental health resources.',

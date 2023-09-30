@@ -1,10 +1,10 @@
-// ignore_for_file: library_private_types_in_public_api, empty_catches
+// ignore_for_file: library_private_types_in_public_api, use_build_context_synchronously
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
-import '../../../widgets/buttons/logout_button.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../../login/login_method.dart';
 
 class CourtAddCase extends StatefulWidget {
   const CourtAddCase({super.key});
@@ -30,6 +30,21 @@ class _CourtAddCaseState extends State<CourtAddCase> {
   bool _ipcSectionsFocused = false;
   bool _nextHearingDateFocused = false;
 
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  void _logout(BuildContext context) async {
+    await _auth.signOut();
+
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.remove('uid');
+    prefs.remove('email');
+    prefs.remove('caseNumber');
+    prefs.remove('isLoggedIn');
+
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => const LoginPage()));
+  }
+
   Future<void> _selectDate(BuildContext context) async {
     final DateTime picked = (await showDatePicker(
       context: context,
@@ -51,6 +66,7 @@ class _CourtAddCaseState extends State<CourtAddCase> {
 
       if (user != null) {
         final String courtId = user.uid;
+        final String courtEmail = user.email!;
         final String lawyerEmail = _lawyerEmailController.text.trim();
         final String clientEmail = _clientEmailController.text.trim();
         final String caseNumber = _caseNumberController.text.trim();
@@ -76,6 +92,7 @@ class _CourtAddCaseState extends State<CourtAddCase> {
             await FirebaseFirestore.instance.collection('cases').add({
               'judgeName': judgeName,
               'courtId': courtId,
+              'courtEmail': courtEmail,
               'caseNumber': caseNumber,
               'clientEmail': clientEmail,
               'lawyerEmail': lawyerEmail,
@@ -92,8 +109,7 @@ class _CourtAddCaseState extends State<CourtAddCase> {
             _nextHearingDateController.clear();
             _selectedDate = null;
           }
-        } catch (error) {
-        }
+        } catch (error) {}
       }
     }
   }
@@ -115,23 +131,10 @@ class _CourtAddCaseState extends State<CourtAddCase> {
         title: const Text('Add Case'),
         actions: [
           IconButton(
-            icon: const Icon(Icons.book),
-            onPressed: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => BailAppView()),
-              // );
-            },
-          ),
-          IconButton(
-            icon: const Icon(Icons.logout),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => LogoutButton()),
-              );
-            },
-          ),
+              onPressed: () {
+                _logout(context);
+              },
+              icon: const Icon(Icons.logout))
         ],
       ),
       body: Center(
@@ -144,7 +147,6 @@ class _CourtAddCaseState extends State<CourtAddCase> {
                 children: [
                   Image.asset('assets/images/2689736-2.png',
                       height: 140, width: 140),
-                  const SizedBox(height: 16),
                 ],
               ),
             ),
@@ -200,7 +202,7 @@ class _CourtAddCaseState extends State<CourtAddCase> {
                         });
                       },
                     ),
-                    const SizedBox(height: 16),
+                    const SizedBox(height: 10),
                     TextFormField(
                       controller: _caseNumberController,
                       decoration: InputDecoration(
@@ -233,7 +235,7 @@ class _CourtAddCaseState extends State<CourtAddCase> {
                         });
                       },
                     ),
-                    const SizedBox(height: 16),
+                    const SizedBox(height: 10),
                     TextFormField(
                       controller: _lawyerEmailController,
                       decoration: InputDecoration(
@@ -267,7 +269,7 @@ class _CourtAddCaseState extends State<CourtAddCase> {
                         });
                       },
                     ),
-                    const SizedBox(height: 16),
+                    const SizedBox(height: 10),
                     TextFormField(
                       controller: _clientNameController,
                       decoration: InputDecoration(
@@ -298,7 +300,7 @@ class _CourtAddCaseState extends State<CourtAddCase> {
                         });
                       },
                     ),
-                    const SizedBox(height: 16),
+                    const SizedBox(height: 10),
                     TextFormField(
                       controller: _ipcSectionsController,
                       decoration: InputDecoration(
@@ -330,7 +332,7 @@ class _CourtAddCaseState extends State<CourtAddCase> {
                         });
                       },
                     ),
-                    const SizedBox(height: 16),
+                    const SizedBox(height: 10),
                     GestureDetector(
                       onTap: () => _selectDate(context),
                       child: AbsorbPointer(
