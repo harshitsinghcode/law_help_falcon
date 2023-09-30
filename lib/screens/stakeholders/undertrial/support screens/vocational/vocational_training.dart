@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../../../methods/youtube player/m_player.dart';
 
 class VocationalTrainingScreen extends StatelessWidget {
+  const VocationalTrainingScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,7 +56,7 @@ class VideoCard extends StatelessWidget {
   final String thumbnailUrl;
   final String description;
 
-  const VideoCard({
+  const VideoCard({super.key, 
     required this.videoId,
     required this.title,
     required this.thumbnailUrl,

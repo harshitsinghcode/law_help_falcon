@@ -1,4 +1,4 @@
-// ignore_for_file: library_private_types_in_public_api
+// ignore_for_file: library_private_types_in_public_api, deprecated_member_use
 
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -126,7 +126,7 @@ class _MentalSupportScreenState extends State<MentalSupportScreen>
             onTap: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => ChatBotScreen(),
+                  builder: (context) => const ChatBotScreen(),
                 ),
               );
             },
