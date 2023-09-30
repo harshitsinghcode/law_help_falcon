@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:law_help/widgets/buttons/logout_button.dart';
 
+import 'package:flutter/material.dart';
+import 'support screens/mental/niketan.dart';
 import 'support screens/vocational/unnati.dart';
 
 class UTSupport extends StatelessWidget {
@@ -84,7 +84,7 @@ class UTSupport extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) {
-                            return VocationalSupportScreen();
+                            return const VocationalSupportScreen();
                           },
                         ),
                       );
@@ -92,21 +92,19 @@ class UTSupport extends StatelessWidget {
                     gradientColors: const [Colors.purple, Colors.deepPurple],
                   ),
                   const SizedBox(height: 20),
-                  LogoutButton(),
-                  const SizedBox(height: 20),
                   SupportOptionCard(
                     title: 'Mental Health Support',
                     description: 'Access mental health resources.',
                     iconPath: 'assets/images/4525515.png',
                     onPressed: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) {
-                      //       return const MentalSupportScreen();
-                      //     },
-                      //   ),
-                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return const MentalSupportScreen();
+                          },
+                        ),
+                      );
                     },
                     gradientColors: const [Colors.teal, Colors.green],
                   ),

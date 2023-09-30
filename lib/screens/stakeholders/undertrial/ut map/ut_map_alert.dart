@@ -1,7 +1,10 @@
 // ignore_for_file: deprecated_member_use
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../../../../universal chat/chat.dart';
 
 class CustomInfoWindow extends StatelessWidget {
   final String title;
@@ -9,14 +12,28 @@ class CustomInfoWindow extends StatelessWidget {
   final String image;
   final int phoneNum;
 
+  final BuildContext context; 
+
+  void _redirectToChatScreen(String lawyerEmail) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => LawyerClientChat(
+          recvEmail: lawyerEmail,
+          senderEmail: FirebaseAuth.instance.currentUser!.email!,
+          recvName: "Pankaj",
+        ),
+      ),
+    );
+  }
+
   const CustomInfoWindow({
     Key? key,
     required this.title,
     required this.description,
     required this.image,
     required this.phoneNum,
+    required this.context, 
   }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -72,6 +89,26 @@ class CustomInfoWindow extends StatelessWidget {
                   label: const Text(
                     'Call',
                     style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                const SizedBox(width: 16),
+                ElevatedButton.icon(
+                  onPressed: () {
+                    _redirectToChatScreen("pankaj@gmail.com");
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.yellow,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  icon: const Icon(
+                    Icons.chat,
+                    color: Colors.black,
+                  ),
+                  label: const Text(
+                    'Chat',
+                    style: TextStyle(color: Colors.black),
                   ),
                 ),
                 const SizedBox(width: 16),

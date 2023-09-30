@@ -20,7 +20,7 @@ class _WelcomeCardState extends State<WelcomeCard> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(milliseconds: 500), () {
+    Future.delayed(const Duration(milliseconds: 300), () {
       setState(() {
         _opacity = 1.0;
       });
@@ -29,60 +29,63 @@ class _WelcomeCardState extends State<WelcomeCard> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 6,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: AnimatedOpacity(
-        duration: const Duration(seconds: 1),
-        opacity: _opacity,
-        child: Column(
-          children: [
-            Container(
-              height: 100,
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [Colors.red, Colors.blue],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
+    return GestureDetector(
+      onTap: () {},
+      child: Card(
+        elevation: 6,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: AnimatedOpacity(
+          duration: const Duration(seconds: 1),
+          opacity: _opacity,
+          child: Column(
+            children: [
+              Container(
+                height: 100,
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Colors.red, Colors.blue],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                  ),
+                ),
+                child: Center(
+                  child: Image.asset(
+                    'assets/images/2716350.png',
+                    height: 120,
+                    width: 120,
+                  ),
                 ),
               ),
-              child: Center(
-                child: Image.asset(
-                  'assets/images/2716350.png',
-                  height: 120,
-                  width: 120,
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  children: [
+                    const Text(
+                      'Unnatii',
+                      style: TextStyle(
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 10),
+                    Text(
+                      'Empowering Undertrials with Knowledge and Skills',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.grey[200],
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 20),
+                  ],
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                children: [
-                  const Text(
-                    'Unnatii',
-                    style: TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: 10),
-                  Text(
-                    'Empowering Undertrials with Knowledge and Skills',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.grey[200],
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: 20),
-                ],
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -117,7 +120,7 @@ class VocationalSupportScreen extends StatelessWidget {
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) =>
-                              eduCourses.EducationalCoursesScreen(),
+                              const eduCourses.EducationalCoursesScreen(),
                         ),
                       );
                     },
@@ -128,7 +131,8 @@ class VocationalSupportScreen extends StatelessWidget {
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => VocationalTrainingScreen(),
+                          builder: (context) =>
+                              const VocationalTrainingScreen(),
                         ),
                       );
                     },
@@ -139,7 +143,7 @@ class VocationalSupportScreen extends StatelessWidget {
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => FeaturedScreen(),
+                          builder: (context) => const FeaturedScreen(),
                         ),
                       );
                     },
@@ -150,7 +154,7 @@ class VocationalSupportScreen extends StatelessWidget {
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => ComputerTrainingScreen(),
+                          builder: (context) => const ComputerTrainingScreen(),
                         ),
                       );
                     },
@@ -204,10 +208,4 @@ class VocationalSupportScreen extends StatelessWidget {
       ),
     );
   }
-}
-
-void main() {
-  runApp(MaterialApp(
-    home: VocationalSupportScreen(),
-  ));
 }
