@@ -28,16 +28,13 @@ class _HomeScreenState extends State<HomeScreen> {
         final UploadTask uploadTask = storageReference.putFile(file);
 
         await uploadTask.whenComplete(() async {
-          // Get the download URL of the uploaded file
           String downloadURL = await storageReference.getDownloadURL();
           setState(() {
             _uploadedFiles.add(downloadURL);
           });
-
         });
       }
-    } catch (e) {
-    }
+    } catch (e) {}
   }
 
   Future<void> _downloadFile(String downloadURL) async {
@@ -47,13 +44,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
       final Directory? externalDirectory = await getExternalStorageDirectory();
 
-      final String savePath = '${externalDirectory!.path}/$fileName';
+      final String savePath = '${externalDirectory!.path}/$fileName.pdf';
 
       final File file = File(savePath);
 
       await file.writeAsBytes(response.bodyBytes);
-    } catch (e) {
-    }
+    } catch (e) {}
   }
 
   @override

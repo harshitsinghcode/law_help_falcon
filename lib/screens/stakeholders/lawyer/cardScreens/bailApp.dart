@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:flutter_pdfview/flutter_pdfview.dart';
-import 'package:flutter/material.dart';
 
 class BailGenerationPage extends StatefulWidget {
   const BailGenerationPage({super.key});
@@ -167,14 +166,6 @@ class _BailGenerationPageState extends State<BailGenerationPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Generate Bail Application'),
-        //actions: [
-        //  IconButton(
-        //   icon: Icon(Icons.logout), // You can use any icon you prefer
-        //    onPressed: () {
-        //      LogoutButton();
-        //    },
-        //  ),
-        //],
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

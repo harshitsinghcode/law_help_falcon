@@ -4,9 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:law_help/screens/stakeholders/court/court_add_case.dart';
 import 'package:law_help/screens/stakeholders/court/court_home.dart';
-import 'package:law_help/screens/stakeholders/court/court_DCM.dart';
-import 'package:law_help/screens/stakeholders/lawyer/lawyer_doc.dart';
-import 'package:law_help/screens/stakeholders/lawyer/lawyer_chat.dart';
 import 'package:law_help/screens/stakeholders/lawyer/news_screen.dart';
 import 'package:law_help/screens/upload.dart';
 
@@ -35,8 +32,6 @@ class _CourtScreenState extends State<CourtScreen> {
   static final List<ScreenModel> screens = [
     ScreenModel(screen: CourtHome(), icon: Icons.home, text: "Home"),
     ScreenModel(
-        screen: const DocumentRepo(), icon: Icons.pending, text: "Manage"),
-    ScreenModel(
         screen: const LawyerNews(), icon: Icons.read_more, text: "News"),
     ScreenModel(
         screen: const CourtAddCase(),
@@ -47,7 +42,6 @@ class _CourtScreenState extends State<CourtScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: screens[_selectedIndex].screen,
       extendBody: true,
       bottomNavigationBar: DotNavigationBar(
@@ -75,6 +69,5 @@ class _CourtScreenState extends State<CourtScreen> {
           selectedItemColor: Colors.yellow,
           unselectedItemColor: Colors.white),
     );
-
   }
 }
