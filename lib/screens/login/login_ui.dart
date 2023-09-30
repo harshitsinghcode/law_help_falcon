@@ -72,9 +72,9 @@ class LoginUI extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Image.asset(
-                          'assets/images/justice-scale.png',
-                          width: 65,
-                          height: 65,
+                          'assets/images/402-legal-balance-legal-unscreen.gif',
+                          width: 70,
+                          height: 70,
                         ),
                         RichText(
                           text: const TextSpan(
@@ -212,20 +212,34 @@ class LoginUI extends StatelessWidget {
             if (userRole == UserRole.courtOfficial)
               _buildTextFormField(identifierController, 'Court ID Number'),
             const SizedBox(height: 30),
-            ElevatedButton(
-              onPressed: onFormSubmitted,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blueAccent,
-                padding: const EdgeInsets.all(16),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-              child: Text(
-                isLoginForm ? 'Login' : 'Create Account',
-                style: const TextStyle(fontSize: 18),
-              ),
-            ),
+            Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 80.0),
+                child: ElevatedButton(
+                  onPressed: onFormSubmitted,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.purple,
+                    padding: const EdgeInsets.all(16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      Image.asset(
+                        isLoginForm
+                            ? 'assets/images/key.png'
+                            : 'assets/images/plus.png',
+                        width: 30,
+                        height: 30,
+                      ),
+                      Text(
+                        isLoginForm ? 'Login' : 'Create Account',
+                        style: const TextStyle(fontSize: 18),
+                      ),
+                    ],
+                  ),
+                )),
             const SizedBox(height: 10),
             TextButton(
               onPressed: onToggleFormMode,
@@ -245,8 +259,7 @@ class LoginUI extends StatelessWidget {
   Widget _buildTextFormField(TextEditingController controller, String labelText,
       {bool isPassword = false}) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-          horizontal: 16.0), 
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: TextFormField(
         controller: controller,
         style: const TextStyle(color: Colors.white),

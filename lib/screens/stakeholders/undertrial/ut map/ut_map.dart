@@ -216,17 +216,6 @@ class _UTMapState extends State<UTMap> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Nearby Lawyers"),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            // Navigate back to the ClientScreen() page
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => const ClientScreen(),
-              ),
-            );
-          },
-        ),
       ),
       body: SizedBox(
         height: MediaQuery.of(context).size.height,

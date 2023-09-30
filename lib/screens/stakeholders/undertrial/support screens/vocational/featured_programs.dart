@@ -1,13 +1,11 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-void main() {
-  runApp(MaterialApp(
-    home: FeaturedScreen(),
-  ));
-}
-
 class FeaturedScreen extends StatefulWidget {
+  const FeaturedScreen({super.key});
+
   @override
   _FeaturedScreenState createState() => _FeaturedScreenState();
 }
@@ -68,7 +66,7 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
                 ),
                 title: Text(
                   article['title'],
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
+                  style: const TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
                 ),
                 onTap: () {
                   _launchURL(article['url']);

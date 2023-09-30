@@ -117,7 +117,7 @@ class VocationalSupportScreen extends StatelessWidget {
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) =>
-                              eduCourses.EducationalCoursesScreen(),
+                              const eduCourses.EducationalCoursesScreen(),
                         ),
                       );
                     },
@@ -128,7 +128,7 @@ class VocationalSupportScreen extends StatelessWidget {
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => VocationalTrainingScreen(),
+                          builder: (context) => const VocationalTrainingScreen(),
                         ),
                       );
                     },
@@ -139,7 +139,7 @@ class VocationalSupportScreen extends StatelessWidget {
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => FeaturedScreen(),
+                          builder: (context) => const FeaturedScreen(),
                         ),
                       );
                     },
@@ -150,7 +150,7 @@ class VocationalSupportScreen extends StatelessWidget {
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => ComputerTrainingScreen(),
+                          builder: (context) => const ComputerTrainingScreen(),
                         ),
                       );
                     },
@@ -204,10 +204,4 @@ class VocationalSupportScreen extends StatelessWidget {
       ),
     );
   }
-}
-
-void main() {
-  runApp(MaterialApp(
-    home: VocationalSupportScreen(),
-  ));
 }

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:expansion_tile_card/expansion_tile_card.dart';
-import 'case_details.dart';
 
 class CaseList extends StatefulWidget {
   final bool showClosed;
@@ -43,13 +42,6 @@ class _CaseListState extends State<CaseList> {
     });
   }
 
-  void _onCaseTap(String caseId) {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => CaseDetailScreen(caseId: caseId),
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
