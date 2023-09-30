@@ -55,7 +55,7 @@ class _CaseListState extends State<CaseList> {
   Widget build(BuildContext context) {
     final ButtonStyle flatButtonStyle = TextButton.styleFrom(
       shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(4.0)),
+        borderRadius: BorderRadius.all(Radius.circular(14.0)),
       ),
     );
     return ListView.builder(
@@ -77,7 +77,7 @@ class _CaseListState extends State<CaseList> {
           ),
           child: InkWell(
             child: Padding(
-              padding: const EdgeInsets.all(12.0),
+              padding: const EdgeInsets.all(10),
               child: ExpansionTileCard(
                 leading: CircleAvatar(child: Text(caseNumber)),
                 title: Text(clientName),
@@ -87,25 +87,36 @@ class _CaseListState extends State<CaseList> {
                     thickness: 1.0,
                     height: 1.0,
                   ),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16.0,
-                        vertical: 8.0,
-                      ),
-                      child: Text(
-                        'Client Name: $clientName\n'
-                        'Next Hearing Date: $nextHearingDate\n'
-                        'IPC Section: $ipc\n'
-                        'Case Status: $caseStatus\n'
-                        'Lawyer: $lawyer\n'
-                        'Judge: $judge',
-                        style: const TextStyle(
-                          fontSize: 16.0,
+                  Stack(
+                    alignment: Alignment
+                        .bottomCenter, // Align the button at the bottom center
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            bottom: 10.0), // Adjust the bottom padding for text
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 16.0,
+                              vertical: 8.0,
+                            ),
+                            child: Text(
+                              'Client Name: $clientName\n'
+                              'Next Hearing Date: $nextHearingDate\n'
+                              'IPC Section: $ipc\n'
+                              'Case Status: $caseStatus\n'
+                              'Lawyer: $lawyer\n'
+                              'Judge: $judge',
+                              style: const TextStyle(
+                                fontSize: 16.0,
+                                locale: Locale('en', 'IN'),
+                              ),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
+                    ],
                   ),
                 ],
               ),
