@@ -1,6 +1,8 @@
 // ignore_for_file: file_names, use_build_context_synchronously
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:law_help/screens/stakeholders/lawyer/cardScreens/pdf_view.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:flutter_pdfview/flutter_pdfview.dart';
 
@@ -139,7 +141,12 @@ class _BailGenerationPageState extends State<BailGenerationPage> {
       ),
     );
 
-    final file = File("/storage/emulated/0/Download/example.pdf");
+    const fileName = "example.pdf"; 
+    final directory = await getApplicationDocumentsDirectory();
+    final filePath = '${directory.path}/files/$fileName';
+
+    final file = File(filePath);
+    await file.create(recursive: true);
     await file.writeAsBytes(await pdf.save());
 
     ScaffoldMessenger.of(context).showSnackBar(
@@ -149,16 +156,11 @@ class _BailGenerationPageState extends State<BailGenerationPage> {
     );
 
     Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (_) => PDFView(
-          filePath: file.path,
-          enableSwipe: true,
-          swipeHorizontal: true,
-          autoSpacing: false,
-          pageFling: false,
-        ),
-      ),
-    );
+  MaterialPageRoute(
+    builder: (_) => PDFViewScreen(pdfFilePath: file.path),
+  ),
+);
+
   }
 
   @override

@@ -12,7 +12,7 @@ class CustomInfoWindow extends StatelessWidget {
   final String image;
   final int phoneNum;
 
-  final BuildContext context; // Add a context parameter
+  final BuildContext context; 
 
   void _redirectToChatScreen(String lawyerEmail) {
     Navigator.of(context).push(
@@ -32,7 +32,7 @@ class CustomInfoWindow extends StatelessWidget {
     required this.description,
     required this.image,
     required this.phoneNum,
-    required this.context, // Initialize it in the constructor
+    required this.context, 
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
