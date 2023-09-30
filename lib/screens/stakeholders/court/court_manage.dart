@@ -94,7 +94,6 @@ class _CourtManageState extends State<CourtManage> {
           _adjournmentsController.clear();
           _advocatesController.clear();
         } catch (error) {
-          print(error.toString());
         }
       }
     }
@@ -121,7 +120,7 @@ class _CourtManageState extends State<CourtManage> {
             children: [
               TextFormField(
                 controller: _caseIdController,
-                decoration: InputDecoration(labelText: 'Case ID'),
+                decoration: const InputDecoration(labelText: 'Case ID'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter the case ID';
@@ -129,13 +128,13 @@ class _CourtManageState extends State<CourtManage> {
                   return null;
                 },
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               GestureDetector(
                 onTap: () => _selectDate(context),
                 child: AbsorbPointer(
                   child: TextFormField(
                     controller: _dateOfFilingController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Date of Filing',
                       suffixIcon: Icon(Icons.calendar_today),
                     ),
@@ -148,12 +147,12 @@ class _CourtManageState extends State<CourtManage> {
                   ),
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               TextFormField(
                 controller: _completedHearingsController,
                 keyboardType: TextInputType.number,
                 decoration:
-                    InputDecoration(labelText: 'Number of Completed Hearings'),
+                    const InputDecoration(labelText: 'Number of Completed Hearings'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter the number of completed hearings';
@@ -161,12 +160,12 @@ class _CourtManageState extends State<CourtManage> {
                   return null;
                 },
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               TextFormField(
                 controller: _adjournmentsController,
                 keyboardType: TextInputType.number,
                 decoration:
-                    InputDecoration(labelText: 'Number of Adjournments'),
+                    const InputDecoration(labelText: 'Number of Adjournments'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter the number of adjournments';
@@ -174,11 +173,11 @@ class _CourtManageState extends State<CourtManage> {
                   return null;
                 },
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               TextFormField(
                 controller: _advocatesController,
                 keyboardType: TextInputType.number,
-                decoration: InputDecoration(labelText: 'Number of Advocates'),
+                decoration: const InputDecoration(labelText: 'Number of Advocates'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter the number of advocates';
@@ -186,13 +185,13 @@ class _CourtManageState extends State<CourtManage> {
                   return null;
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _submitCase,
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.pinkAccent),
                 ),
-                child: Text(
+                child: const Text(
                   'Submit',
                   style: TextStyle(color: Colors.white),
                 ),

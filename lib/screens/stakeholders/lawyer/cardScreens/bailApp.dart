@@ -1,4 +1,4 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, use_build_context_synchronously
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:pdf/widgets.dart' as pw;
@@ -41,7 +41,7 @@ class _BailGenerationPageState extends State<BailGenerationPage> {
   ) async {
     final pdf = pw.Document();
 
-    final regularStyle = pw.TextStyle(fontSize: 12);
+    const regularStyle = pw.TextStyle(fontSize: 12);
     final boldStyle =
         pw.TextStyle(fontSize: 12, fontWeight: pw.FontWeight.bold);
 
