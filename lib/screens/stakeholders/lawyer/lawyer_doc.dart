@@ -47,7 +47,11 @@ class LawyerDocument extends StatelessWidget {
   }
 
   Widget _buildCard(String cardTitle) {
-    return Card(
+    return GestureDetector(
+    onTap: () {
+      _handleCardTap(context, cardTitle);
+    },
+    child: Card(
       elevation: 5,
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -63,5 +67,30 @@ class LawyerDocument extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+void _handleCardTap(BuildContext context, String cardTitle) {
+  // Define your navigation logic based on the card title
+  // Navigate to a different page for each card if needed
+  if (cardTitle == 'Bail Generation System') {
+    // Navigate to Bail Generation System page
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => BailGenerationPage()),
+    );
+  } else if (cardTitle == 'Vakalatnama Generator') {
+    // Navigate to Vakalatnama Generator page
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => VakalatnamaGeneratorPage()),
+    );
+  } else if (cardTitle == 'Prayer Generator') {
+    // Navigate to Prayer Generator page
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => PrayerGeneratorPage()),
+    );
+  } else {
+    // Handle other cards if needed
   }
 }
