@@ -59,7 +59,6 @@ class _CourtCaseListState extends State<CourtCaseList> {
         final caseData = cases[index].data() as Map<String, dynamic>;
         final clientName = caseData['clientName'] as String;
         final nextHearingDate = caseData['nextHearingDate'] as String;
-        final caseStatus = caseData['caseStatus'] ?? 'N/A';
         final ipc = caseData['ipcSections'] ?? 'N/A';
         final lawyer = caseData['lawyerName'] ?? 'N/A';
         final judge = caseData['judgeName'] ?? 'N/A';
