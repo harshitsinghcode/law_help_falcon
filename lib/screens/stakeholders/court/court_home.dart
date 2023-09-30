@@ -70,7 +70,7 @@ class _DashboardHeaderState extends State<DashboardHeader> {
     final currentDateWithoutTime =
         DateTime(currentDate.year, currentDate.month, currentDate.day);
     final formattedDate =
-        "${currentDateWithoutTime.year}-${currentDateWithoutTime.month}-${currentDateWithoutTime.day}";
+        "${currentDateWithoutTime.year}-${currentDateWithoutTime.month}-0${currentDateWithoutTime.day}";
 
     final casesQuery = await FirebaseFirestore.instance
         .collection('cases')
