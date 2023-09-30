@@ -96,15 +96,12 @@ class CaseDetailScreen extends StatelessWidget {
         future: fetchCaseDetails(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            // While waiting for data to load, you can display a loading indicator.
             return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
-            // If there's an error fetching the data, display an error message.
             return Center(
               child: Text('Error loading case details: ${snapshot.error}'),
             );
           } else if (!snapshot.hasData || !snapshot.data!.exists) {
-            // If no data or the document does not exist, display a message.
             return const Center(child: Text('Case not found.'));
           } else {
             final caseData = snapshot.data!.data() as Map<String, dynamic>;
@@ -139,7 +136,6 @@ class CaseDetailScreen extends StatelessWidget {
                     caseData['ipcSections'] ?? 'N/A',
                   ),
                   const SizedBox(height: 20),
-                  // Add more relevant case-related facts or features here.
                 ],
               ),
             );

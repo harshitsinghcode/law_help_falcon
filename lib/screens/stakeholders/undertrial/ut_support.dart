@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:law_help/widgets/buttons/logout_button.dart';
 
+import 'support screens/mental/niketan.dart';
 import 'support screens/vocational/unnati.dart';
 
 class UTSupport extends StatelessWidget {
@@ -99,14 +100,14 @@ class UTSupport extends StatelessWidget {
                     description: 'Access mental health resources.',
                     iconPath: 'assets/images/4525515.png',
                     onPressed: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) {
-                      //       return const MentalSupportScreen();
-                      //     },
-                      //   ),
-                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return const MentalSupportScreen();
+                          },
+                        ),
+                      );
                     },
                     gradientColors: const [Colors.teal, Colors.green],
                   ),

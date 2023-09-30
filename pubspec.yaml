@@ -46,11 +46,13 @@ dependencies:
   url_launcher: ^6.1.14
   google_maps_flutter: ^2.5.0
   smooth_page_indicator: ^1.1.0
-  http: ^1.1.0
+  http: ^0.13.3
   html: ^0.15.4
   youtube_player_flutter: ^8.1.2
   card_slider: ^1.0.5
   expansion_tile_card: ^3.0.0
+  bubble: ^1.2.1
+  dialogflow_flutter: ^1.0.0
 
 
 dev_dependencies:
@@ -78,6 +80,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - assets/json/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

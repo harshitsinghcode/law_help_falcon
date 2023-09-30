@@ -20,7 +20,7 @@ class _WelcomeCardState extends State<WelcomeCard> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(milliseconds: 500), () {
+    Future.delayed(const Duration(milliseconds: 300), () {
       setState(() {
         _opacity = 1.0;
       });
