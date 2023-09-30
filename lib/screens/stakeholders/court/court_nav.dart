@@ -30,7 +30,7 @@ class _CourtScreenState extends State<CourtScreen> {
   int _selectedIndex = 0;
 
   static final List<ScreenModel> screens = [
-    ScreenModel(screen: CourtHome(), icon: Icons.home, text: "Home"),
+    ScreenModel(screen: const CourtHome(), icon: Icons.home, text: "Home"),
     ScreenModel(screen: const LawyerChat(), icon: Icons.chat, text: "Chat"),
     ScreenModel(
         screen: const LawyerNews(), icon: Icons.read_more, text: "News"),

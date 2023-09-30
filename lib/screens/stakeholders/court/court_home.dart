@@ -119,7 +119,7 @@ class _DashboardHeaderState extends State<DashboardHeader> {
               navigateToCaseListScreen(context, false, true);
             },
             child: HoverCard(
-              title: 'Pending',
+              title: 'Today',
               count: '$todayCases',
               icon: Icons.timer,
               backgroundColor: Colors.blue,

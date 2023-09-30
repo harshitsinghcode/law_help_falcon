@@ -200,7 +200,7 @@ class _UTMapState extends State<UTMap> {
   void loadData() async {
     for (int i = 0; i < _latLang.length; i++) {
       Uint8List? markerIcon =
-          await getBytesFromAssets('assets/images/lawyer.png', 100);
+          await getBytesFromAssets('assets/images/lawyer copy.png', 140);
 
       _markers.add(
         Marker(

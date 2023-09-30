@@ -28,7 +28,7 @@ class _HoverCardState extends State<HoverCard> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 150,
+      width: 170,
       child: Card(
         elevation: isHovered ? 10 : 2,
         shape: RoundedRectangleBorder(
@@ -75,9 +75,9 @@ class _HoverCardState extends State<HoverCard> {
                 ),
                 child: Center(
                   child: Text(
-                    widget.count,
+                    "${widget.title} - ${widget.count}",
                     style: const TextStyle(
-                      fontSize: 24,
+                      fontSize: 18,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
