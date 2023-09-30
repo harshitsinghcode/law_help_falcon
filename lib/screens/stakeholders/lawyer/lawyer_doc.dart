@@ -49,11 +49,6 @@ class LawyerDocument extends StatelessWidget {
               _buildCard(context, 'Vakalatnama Generator',
                   'Vakalatnama generation for start of case '),
               SizedBox(height: 20.0), // Add some spacing
-              _buildCard(
-                context,
-                'Prayer Generator',
-                'Prayer generator for end-case proceedings',
-              ),
             ],
           ),
         ),
@@ -72,11 +67,6 @@ class LawyerDocument extends StatelessWidget {
         context,
         MaterialPageRoute(builder: (context) => VakalatnamaGeneratorPage()),
       );
-    } else if (cardTitle == 'Prayer Generator') {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => PrayerGeneratorPage()),
-      );
     } else {
       // Handle other cards if needed
     }
@@ -87,7 +77,7 @@ class LawyerDocument extends StatelessWidget {
       onTap: () {
         _handleCardTap(context, cardTitle);
       },
-      child: Container(
+      child: SizedBox(
         height: 200.0, // Set a fixed height for the cards
         child: Card(
           elevation: 5,
