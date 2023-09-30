@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'cardScreens/vakNam.dart';
-import 'cardScreens/pray.dart';
 import 'cardScreens/bailApp.dart';
 import '../../login/login_method.dart';
 
@@ -77,30 +76,41 @@ class LawyerDocument extends StatelessWidget {
       onTap: () {
         _handleCardTap(context, cardTitle);
       },
-      child: SizedBox(
-        height: 200.0, // Set a fixed height for the cards
-        child: Card(
-          elevation: 5,
-          child: Padding(
-            padding: const EdgeInsets.all(18.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  cardTitle,
-                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.center,
-                ),
-                SizedBox(height: 10.0),
-                Text(
-                  subtitle,
-                  style: TextStyle(fontSize: 14.0, color: Colors.grey),
-                  textAlign: TextAlign.center,
-                ),
-              ],
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.blueGrey[50],
+          borderRadius: BorderRadius.circular(12.0),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 2,
+              blurRadius: 5,
+              offset: Offset(0, 3),
             ),
-          ),
+          ],
+        ),
+        width: double.infinity,
+        padding: const EdgeInsets.all(18.0),
+        margin: const EdgeInsets.only(bottom: 20.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              cardTitle,
+              style: const TextStyle(
+                  fontSize: 24.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.orange),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 10.0),
+            Text(
+              subtitle,
+              style: const TextStyle(fontSize: 16.0, color: Colors.green),
+              textAlign: TextAlign.center,
+            ),
+          ],
         ),
       ),
     );
