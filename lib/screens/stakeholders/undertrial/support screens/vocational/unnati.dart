@@ -205,9 +205,3 @@ class VocationalSupportScreen extends StatelessWidget {
     );
   }
 }
-
-void main() {
-  runApp(const MaterialApp(
-    home: VocationalSupportScreen(),
-  ));
-}
