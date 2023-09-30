@@ -111,7 +111,7 @@ class _VakalatnamaGeneratorPageState extends State<VakalatnamaGeneratorPage> {
                   style: regularStyle,
                   textAlign: pw.TextAlign.justify),
               pw.Text(
-                  '''IN WITNESS WHERE OF I/We do hereunto set my/our hand to these presents the contents of which have
+                  '''IN WITNESS WHERE OF I/We do here unto set my/our hand to these presents the contents of which have
 been understood by me/us on this $date of 2023 Accepted subject to the terms of
 the fees. ''',
                   style: boldStyle, textAlign: pw.TextAlign.justify),
