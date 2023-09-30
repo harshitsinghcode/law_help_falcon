@@ -36,7 +36,7 @@ class _CourtCaseListState extends State<CourtCaseList> {
     final currentDateWithoutTime =
         DateTime(currentDate.year, currentDate.month, currentDate.day);
     final formattedDate =
-        "${currentDateWithoutTime.year}-${currentDateWithoutTime.month}-${currentDateWithoutTime.day}";
+        "${currentDateWithoutTime.year}-${currentDateWithoutTime.month}-0${currentDateWithoutTime.day}";
 
     currentUser = FirebaseAuth.instance.currentUser!;
 
@@ -45,7 +45,7 @@ class _CourtCaseListState extends State<CourtCaseList> {
         .where('courtEmail', isEqualTo: currentUser.email)
         .where('nextHearingDate', isEqualTo: formattedDate)
         .get();
-        
+
     setState(() {
       cases = casesQuery.docs.toList();
     });
@@ -203,7 +203,8 @@ class _CourtCaseListScreenState extends State<CourtCaseListScreen> {
       appBar: AppBar(
         title: const Text('Case List'),
       ),
-      body: CourtCaseList(showClosed: widget.showClosed, showOpen: widget.showOpen),
+      body: CourtCaseList(
+          showClosed: widget.showClosed, showOpen: widget.showOpen),
     );
   }
 }

@@ -206,8 +206,6 @@ class LoginUI extends StatelessWidget {
             if (userRole == UserRole.lawyer)
               _buildTextFormField(identifierController, 'Bar Number'),
             if (userRole == UserRole.client) const SizedBox(height: 20),
-            if (userRole == UserRole.client)
-              _buildTextFormField(identifierController, 'Case Number'),
             if (userRole == UserRole.courtOfficial) const SizedBox(height: 20),
             if (userRole == UserRole.courtOfficial)
               _buildTextFormField(identifierController, 'Court ID Number'),
