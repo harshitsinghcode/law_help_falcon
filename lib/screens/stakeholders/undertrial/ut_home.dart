@@ -106,7 +106,7 @@ class _UTHomeState extends State<UTHome> {
         children: [
           const SizedBox(height: 20),
           _buildSectionInfo("IPC Section:", document['ipcSections'],
-              'assets/images/videos.png'),
+              'assets/images/orange-error-icon-0.png'),
           _buildSectionInfo(
               "Lawyer:", document['lawyerName'], 'assets/images/3731686.png'),
           _buildSectionInfo(
@@ -115,8 +115,8 @@ class _UTHomeState extends State<UTHome> {
               'assets/images/schedule.png'),
           _buildSectionInfo(
               "Case Status:", "Ongoing", 'assets/images/loading.png'),
-          _buildSectionInfo("Sections Violated:", document['ipcSections'],
-              'assets/images/orange-error-icon-0.png'),
+          // _buildSectionInfo("Sections Violated:", document['ipcSections'],
+          //     'assets/images/orange-error-icon-0.png'),
           const SizedBox(height: 20),
         ],
       ),

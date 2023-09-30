@@ -72,8 +72,10 @@ class _LawyerClientChatState extends State<LawyerClientChat> {
                     );
                   }
                   final messages = snapshot.data!.docs.where((element) {
-                    return (element['receiverEmail'] == widget.recvEmail ||
-                        element['senderEmail'] == widget.recvEmail);
+                    return (element['receiverEmail'] == widget.senderEmail &&
+                            element['senderEmail'] == widget.recvEmail) ||
+                        (element['senderEmail'] == widget.senderEmail &&
+                            element['receiverEmail'] == widget.recvEmail);
                   }).toList();
                   List<Widget> messageWidgets = [];
                   for (var message in messages) {
@@ -179,8 +181,7 @@ class MessageWidget extends StatelessWidget {
               child: InkWell(
                 onTap: () {},
                 child: FractionallySizedBox(
-                  widthFactor:
-                      0.6, // Adjust this value for the desired width (40-45%)
+                  widthFactor: 0.6,
                   child: Container(
                     padding: const EdgeInsets.all(12),
                     child: Row(
@@ -196,7 +197,7 @@ class MessageWidget extends StatelessWidget {
                               color: isMe ? Colors.white : Colors.white,
                               fontWeight: FontWeight.w600,
                             ),
-                            softWrap: true, // Allow text to wrap to a new line
+                            softWrap: true,
                           ),
                         ),
                         if (isMe)
