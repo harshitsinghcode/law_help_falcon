@@ -6,6 +6,7 @@ import 'package:law_help/screens/stakeholders/court/court_add_case.dart';
 import 'package:law_help/screens/stakeholders/court/court_home.dart';
 import 'package:law_help/screens/stakeholders/lawyer/news_screen.dart';
 import 'package:law_help/screens/upload.dart';
+import 'case_search.dart';
 
 class ScreenModel {
   final Widget screen;
@@ -37,6 +38,10 @@ class _CourtScreenState extends State<CourtScreen> {
         screen: const CourtAddCase(),
         icon: Icons.document_scanner_sharp,
         text: "Add Case"),
+    ScreenModel(
+        screen: const WebViewExample(),
+        icon: Icons.search,
+        text: "Search Precedents")
   ];
 
   @override
@@ -63,6 +68,10 @@ class _CourtScreenState extends State<CourtScreen> {
             ),
             DotNavigationBarItem(
               icon: const Icon(Icons.add),
+              selectedColor: Colors.yellow,
+            ),
+            DotNavigationBarItem(
+              icon: const Icon(Icons.search),
               selectedColor: Colors.yellow,
             ),
           ],
