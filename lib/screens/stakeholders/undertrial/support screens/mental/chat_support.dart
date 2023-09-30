@@ -1,9 +1,13 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:bubble/bubble.dart';
 import 'package:dialogflow_flutter/googleAuth.dart';
 import 'package:flutter/material.dart';
 import 'package:dialogflow_flutter/dialogflowFlutter.dart';
 
 class ChatBotScreen extends StatefulWidget {
+  const ChatBotScreen({super.key});
+
   @override
   _ChatBotScreenState createState() => _ChatBotScreenState();
 }
@@ -40,61 +44,58 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
         elevation: 10,
         title: const Text("Dialog Flow Chatbot"),
       ),
-      body: Container(
-        child: Column(
-          children: <Widget>[
-            Flexible(
-              child: ListView.builder(
-                  reverse: true,
-                  itemCount: messsages.length,
-                  itemBuilder: (context, index) => chat(
-                      messsages[index]["message"].toString(),
-                      messsages[index]["data"])),
+      body: Column(
+        children: <Widget>[
+          Flexible(
+            child: ListView.builder(
+                reverse: true,
+                itemCount: messsages.length,
+                itemBuilder: (context, index) => chat(
+                    messsages[index]["message"].toString(),
+                    messsages[index]["data"])),
+          ),
+          const Divider(
+            height: 6.0,
+          ),
+          Container(
+            padding:
+                const EdgeInsets.only(left: 15.0, right: 15.0, bottom: 20),
+            margin: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Row(
+              children: <Widget>[
+                Flexible(
+                    child: TextField(
+                  controller: messageInsert,
+                  decoration: const InputDecoration.collapsed(
+                      hintText: "Send your message",
+                      hintStyle: TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 18.0)),
+                )),
+                Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 4.0),
+                    child: IconButton(
+                        icon: const Icon(
+                          Icons.send,
+                          size: 30.0,
+                        ),
+                        onPressed: () {
+                          if (messageInsert.text.isEmpty) {
+                          } else {
+                            setState(() {
+                              messsages.insert(0,
+                                  {"data": 1, "message": messageInsert.text});
+                            });
+                            response(messageInsert.text);
+                            messageInsert.clear();
+                          }
+                        }))
+              ],
             ),
-            const Divider(
-              height: 6.0,
-            ),
-            Container(
-              padding:
-                  const EdgeInsets.only(left: 15.0, right: 15.0, bottom: 20),
-              margin: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Row(
-                children: <Widget>[
-                  Flexible(
-                      child: TextField(
-                    controller: messageInsert,
-                    decoration: const InputDecoration.collapsed(
-                        hintText: "Send your message",
-                        hintStyle: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18.0)),
-                  )),
-                  Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 4.0),
-                      child: IconButton(
-                          icon: const Icon(
-                            Icons.send,
-                            size: 30.0,
-                          ),
-                          onPressed: () {
-                            if (messageInsert.text.isEmpty) {
-                              print("empty message");
-                            } else {
-                              setState(() {
-                                messsages.insert(0,
-                                    {"data": 1, "message": messageInsert.text});
-                              });
-                              response(messageInsert.text);
-                              messageInsert.clear();
-                            }
-                          }))
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 15.0,
-            )
-          ],
-        ),
+          ),
+          const SizedBox(
+            height: 15.0,
+          )
+        ],
       ),
     );
   }

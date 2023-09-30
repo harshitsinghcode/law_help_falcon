@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'm_player.dart';
 
 class VideoListScreen extends StatelessWidget {
+  const VideoListScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,7 +55,7 @@ class VideoCard extends StatelessWidget {
   final String thumbnailUrl;
   final String description;
 
-  const VideoCard({
+  const VideoCard({super.key, 
     required this.videoId,
     required this.title,
     required this.thumbnailUrl,

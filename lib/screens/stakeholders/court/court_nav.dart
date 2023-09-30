@@ -5,7 +5,6 @@ import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:law_help/screens/stakeholders/court/court_add_case.dart';
 import 'package:law_help/screens/stakeholders/court/court_home.dart';
 import 'package:law_help/screens/stakeholders/lawyer/lawyer_chat.dart';
-import 'package:law_help/screens/stakeholders/lawyer/lawyer_doc.dart';
 import 'package:law_help/screens/stakeholders/lawyer/news_screen.dart';
 
 class ScreenModel {

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../../../methods/youtube player/m_player.dart';
 
 class EducationalCoursesScreen extends StatelessWidget {
+  const EducationalCoursesScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
