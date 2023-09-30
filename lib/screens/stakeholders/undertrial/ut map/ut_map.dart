@@ -19,7 +19,7 @@ class UTMap extends StatefulWidget {
 class _UTMapState extends State<UTMap> {
   static const CameraPosition _initialCameraPosition = CameraPosition(
     target: LatLng(13.043554623623109, 80.23367539609262), //T Nagar
-    zoom: 6,
+    zoom: 12,
   );
 
   List<String> names = [
@@ -200,7 +200,7 @@ class _UTMapState extends State<UTMap> {
   void loadData() async {
     for (int i = 0; i < _latLang.length; i++) {
       Uint8List? markerIcon =
-          await getBytesFromAssets('assets/images/lawyer copy.png', 140);
+          await getBytesFromAssets('assets/images/lawyer copy.png', 160);
 
       _markers.add(
         Marker(
