@@ -44,18 +44,12 @@ class _CaseListState extends State<CaseList> {
 
   @override
   Widget build(BuildContext context) {
-    final ButtonStyle flatButtonStyle = TextButton.styleFrom(
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(14.0)),
-      ),
-    );
     return ListView.builder(
       itemCount: cases.length,
       itemBuilder: (context, index) {
         final caseData = cases[index].data() as Map<String, dynamic>;
         final clientName = caseData['clientName'] as String;
         final nextHearingDate = caseData['nextHearingDate'] as String;
-        final caseStatus = caseData['caseStatus'] ?? 'N/A';
         final ipc = caseData['ipcSections'] ?? 'N/A';
         final lawyer = caseData['lawyerName'] ?? 'N/A';
         final judge = caseData['judgeName'] ?? 'N/A';
@@ -140,7 +134,7 @@ class _CaseListState extends State<CaseList> {
                                 color: Colors.white,
                               ),
                             ),
-                            TextSpan(text: 'Ongoing\n'),
+                            const TextSpan(text: 'Ongoing\n'),
                             const TextSpan(
                               text: '• ',
                             ),

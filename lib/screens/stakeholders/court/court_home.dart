@@ -2,12 +2,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../../models/hover_card.dart';
 import 'court_show_case.dart';
 
 class CourtHome extends StatelessWidget {
+  const CourtHome({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
