@@ -48,6 +48,10 @@ dependencies:
   smooth_page_indicator: ^1.1.0
   http: ^1.1.0
   html: ^0.15.4
+  card_slider: ^1.0.5
+  expansion_tile_card: ^3.0.0
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

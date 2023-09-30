@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
+import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'case_details.dart';
 
 class CaseList extends StatefulWidget {
@@ -21,6 +21,8 @@ class CaseList extends StatefulWidget {
 }
 
 class _CaseListState extends State<CaseList> {
+  final GlobalKey<ExpansionTileCardState> cardA = GlobalKey();
+  final GlobalKey<ExpansionTileCardState> cardB = GlobalKey();
   late User currentUser;
   List<DocumentSnapshot> cases = [];
 
@@ -51,42 +53,58 @@ class _CaseListState extends State<CaseList> {
 
   @override
   Widget build(BuildContext context) {
+    final ButtonStyle flatButtonStyle = TextButton.styleFrom(
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(4.0)),
+      ),
+    );
     return ListView.builder(
       itemCount: cases.length,
       itemBuilder: (context, index) {
         final caseData = cases[index].data() as Map<String, dynamic>;
         final clientName = caseData['clientName'] as String;
         final nextHearingDate = caseData['nextHearingDate'] as String;
+        final caseStatus = caseData['caseStatus'] ?? 'N/A';
+        final ipc = caseData['ipcSections'] ?? 'N/A';
+        final lawyer = caseData['lawyerName'] ?? 'N/A';
+        final judge = caseData['judgeName'] ?? 'N/A';
+        final caseNumber = caseData['caseNumber'] ?? 'N/A';
         final caseId = cases[index].id;
-
         return Card(
-          elevation: 3,
           margin: const EdgeInsets.all(8.0),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0),
+            borderRadius: BorderRadius.circular(20.0),
           ),
           child: InkWell(
-            onTap: () {
-              _onCaseTap(caseId);
-            },
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    clientName,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
+              padding: const EdgeInsets.all(12.0),
+              child: ExpansionTileCard(
+                leading: CircleAvatar(child: Text(caseNumber)),
+                title: Text(clientName),
+                subtitle: Text(nextHearingDate),
+                children: <Widget>[
+                  const Divider(
+                    thickness: 1.0,
+                    height: 1.0,
                   ),
-                  const SizedBox(height: 8),
-                  Text(
-                    'Next hearing: $nextHearingDate',
-                    style: const TextStyle(
-                      fontSize: 14,
-                      color: Colors.grey,
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0,
+                        vertical: 8.0,
+                      ),
+                      child: Text(
+                        'Client Name: $clientName\n'
+                        'Next Hearing Date: $nextHearingDate\n'
+                        'IPC Section: $ipc\n'
+                        'Case Status: $caseStatus\n'
+                        'Lawyer: $lawyer\n'
+                        'Judge: $judge',
+                        style: const TextStyle(
+                          fontSize: 16.0,
+                        ),
+                      ),
                     ),
                   ),
                 ],
@@ -124,3 +142,37 @@ class _CaseListScreenState extends State<CaseListScreen> {
     );
   }
 }
+
+/**  elevation: 3,
+            
+            child: InkWell(
+              onTap: () {
+                _onCaseTap(caseId);
+              }, 
+            
+            
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      clientName,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      'Next hearing: $nextHearingDate',
+                      style: const TextStyle(
+                        fontSize: 14,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            **/
