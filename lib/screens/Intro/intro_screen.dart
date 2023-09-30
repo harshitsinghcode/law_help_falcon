@@ -179,7 +179,7 @@ class _IntroScreenState extends State<IntroScreen> {
   Widget buildFeaturePage(
       String title, List<String> features, String imageAsset) {
     return Container(
-      color: Colors.grey[800], // Grey 800 background color
+      color: Colors.grey[800], 
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
