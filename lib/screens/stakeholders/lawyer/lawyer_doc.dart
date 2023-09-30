@@ -85,15 +85,6 @@ class _LawyerDocumentState extends State<LawyerDocument> {
                         height: 100,
                         fit: BoxFit.contain,
                       ),
-                      const SizedBox(height: 10),
-                      const Text(
-                        'Document Generation',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
                     ],
                   ),
                 ),

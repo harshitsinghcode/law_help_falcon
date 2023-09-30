@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:law_help/screens/stakeholders/lawyer/cardScreens/pdf_view.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pdf/widgets.dart' as pw;
-import 'package:flutter_pdfview/flutter_pdfview.dart';
 
 class BailGenerationPage extends StatefulWidget {
   const BailGenerationPage({super.key});
@@ -173,11 +172,6 @@ class _BailGenerationPageState extends State<BailGenerationPage> {
         padding: const EdgeInsets.all(8.0),
         child: ListView(
           children: <Widget>[
-            const Text(
-              'Client Details',
-              style: TextStyle(fontSize: 24.0),
-              textAlign: TextAlign.center,
-            ),
             const SizedBox(height: 8.0),
             Form(
               key: _formKey,

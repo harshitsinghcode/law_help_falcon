@@ -1,9 +1,10 @@
 // ignore_for_file: file_names, use_build_context_synchronously
 
 import 'package:flutter/material.dart';
+import 'package:law_help/screens/stakeholders/lawyer/cardScreens/pdf_view.dart';
+import 'package:path_provider/path_provider.dart';
 import 'dart:io';
 import 'package:pdf/widgets.dart' as pw;
-import 'package:flutter_pdfview/flutter_pdfview.dart';
 
 class VakalatnamaGeneratorPage extends StatefulWidget {
   const VakalatnamaGeneratorPage({super.key});
@@ -126,7 +127,12 @@ the fees. ''',
       ),
     );
 
-    final file = File("/storage/emulated/0/Download/example.pdf");
+    const fileName = "example.pdf";
+    final directory = await getApplicationDocumentsDirectory();
+    final filePath = '${directory.path}/files/$fileName';
+
+    final file = File(filePath);
+    await file.create(recursive: true);
     await file.writeAsBytes(await pdf.save());
 
     ScaffoldMessenger.of(context).showSnackBar(
@@ -137,13 +143,7 @@ the fees. ''',
 
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (_) => PDFView(
-          filePath: file.path,
-          enableSwipe: true,
-          swipeHorizontal: true,
-          autoSpacing: false,
-          pageFling: false,
-        ),
+        builder: (_) => PDFViewScreen(pdfFilePath: file.path),
       ),
     );
   }
@@ -152,25 +152,12 @@ the fees. ''',
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Generate Bail Application'),
-        //actions: [
-        //  IconButton(
-        //   icon: Icon(Icons.logout), // You can use any icon you prefer
-        //    onPressed: () {
-        //      LogoutButton();
-        //    },
-        //  ),
-        //],
+        title: const Text('Generate Vakalatnama'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ListView(
           children: <Widget>[
-            const Text(
-              'Vakalatnama Details',
-              style: TextStyle(fontSize: 24.0),
-              textAlign: TextAlign.center,
-            ),
             const SizedBox(height: 8.0),
             Form(
               key: _formKey,
