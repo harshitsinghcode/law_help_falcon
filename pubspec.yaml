@@ -49,6 +49,10 @@ dependencies:
   http: ^1.1.0
   html: ^0.15.4
   youtube_player_flutter: ^8.1.2
+  card_slider: ^1.0.5
+  expansion_tile_card: ^3.0.0
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
