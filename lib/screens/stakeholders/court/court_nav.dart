@@ -5,7 +5,6 @@ import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:law_help/screens/stakeholders/court/court_add_case.dart';
 import 'package:law_help/screens/stakeholders/court/court_home.dart';
 import 'package:law_help/screens/stakeholders/lawyer/news_screen.dart';
-import 'package:law_help/screens/upload.dart';
 import 'case_search.dart';
 
 class ScreenModel {
@@ -31,7 +30,7 @@ class _CourtScreenState extends State<CourtScreen> {
   int _selectedIndex = 0;
 
   static final List<ScreenModel> screens = [
-    ScreenModel(screen: CourtHome(), icon: Icons.home, text: "Home"),
+    ScreenModel(screen: const CourtHome(), icon: Icons.home, text: "Home"),
     ScreenModel(
         screen: const LawyerNews(), icon: Icons.read_more, text: "News"),
     ScreenModel(

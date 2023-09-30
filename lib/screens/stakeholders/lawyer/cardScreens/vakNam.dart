@@ -1,10 +1,9 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, use_build_context_synchronously
 
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:flutter_pdfview/flutter_pdfview.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class VakalatnamaGeneratorPage extends StatefulWidget {
   const VakalatnamaGeneratorPage({super.key});
@@ -35,7 +34,7 @@ class _VakalatnamaGeneratorPageState extends State<VakalatnamaGeneratorPage> {
   ) async {
     final pdf = pw.Document();
 
-    final regularStyle = pw.TextStyle(fontSize: 12);
+    const regularStyle = pw.TextStyle(fontSize: 12);
     final boldStyle =
         pw.TextStyle(fontSize: 12, fontWeight: pw.FontWeight.bold);
 
