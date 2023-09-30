@@ -62,7 +62,7 @@ class _IntroScreenState extends State<IntroScreen> {
                     ),
                     onTap: () {
                       if (onLastPage) {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                             builder: (context) => const LoginPage(),

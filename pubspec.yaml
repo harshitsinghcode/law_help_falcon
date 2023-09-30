@@ -53,6 +53,8 @@ dependencies:
   expansion_tile_card: ^3.0.0
   bubble: ^1.2.1
   dialogflow_flutter: ^1.0.0
+  file_picker: ^5.5.0
+  read_pdf_text: ^0.2.1
 
 
 dev_dependencies:

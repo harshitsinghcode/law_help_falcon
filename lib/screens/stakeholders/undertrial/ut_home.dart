@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
+import 'package:law_help/screens/stakeholders/undertrial/fir_analyser.dart';
 import 'support screens/no_case.dart';
 
 class UTHome extends StatefulWidget {
@@ -54,6 +54,18 @@ class _UTHomeState extends State<UTHome> {
         return Scaffold(
           appBar: AppBar(
             title: const Text('Case Details'),
+            actions: [
+              IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const CaseInfoAnalyzer(),
+                      ),
+                    );
+                  },
+                  icon: const Icon(Icons.question_mark))
+            ],
           ),
           body: SingleChildScrollView(
             padding: const EdgeInsets.all(16.0),
