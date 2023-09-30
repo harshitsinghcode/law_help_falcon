@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -233,19 +235,19 @@ class _UTHomeState extends State<UTHome> {
                     ),
                   ),
                   RichText(
-                    text: TextSpan(
-                      style: const TextStyle(
+                    text: const TextSpan(
+                      style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
                       children: [
-                        const TextSpan(
+                        TextSpan(
                           text: 'Time: ',
                         ),
                         TextSpan(
-                          // text: document['nextHearingDate'],
-                          style: const TextStyle(
+                          text: '10:00 AM',
+                          style: TextStyle(
                             fontWeight: FontWeight.normal,
                             fontSize: 18,
                             color: Colors.white,
@@ -255,19 +257,19 @@ class _UTHomeState extends State<UTHome> {
                     ),
                   ),
                   RichText(
-                    text: TextSpan(
-                      style: const TextStyle(
+                    text: const TextSpan(
+                      style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                         color: Colors.green,
                       ),
                       children: [
-                        const TextSpan(
+                        TextSpan(
                           text: 'Location: ',
                         ),
                         TextSpan(
-                          // text: document['nextHearingDate'],
-                          style: const TextStyle(
+                          text: 'Bilaspur HC',
+                          style: TextStyle(
                             fontWeight: FontWeight.normal,
                             fontSize: 18,
                             color: Colors.white,
