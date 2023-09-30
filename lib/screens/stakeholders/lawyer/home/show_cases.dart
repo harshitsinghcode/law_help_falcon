@@ -44,6 +44,11 @@ class _CaseListState extends State<CaseList> {
 
   @override
   Widget build(BuildContext context) {
+    final ButtonStyle flatButtonStyle = TextButton.styleFrom(
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(14.0)),
+      ),
+    );
     return ListView.builder(
       itemCount: cases.length,
       itemBuilder: (context, index) {
@@ -62,7 +67,7 @@ class _CaseListState extends State<CaseList> {
           ),
           child: InkWell(
             child: Padding(
-              padding: const EdgeInsets.all(12.0),
+              padding: const EdgeInsets.all(10),
               child: ExpansionTileCard(
                 leading: CircleAvatar(child: Text(caseNumber)),
                 title: Text(
