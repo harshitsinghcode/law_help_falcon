@@ -5,21 +5,21 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:expansion_tile_card/expansion_tile_card.dart';
 
-class CaseList extends StatefulWidget {
+class CourtCaseList extends StatefulWidget {
   final bool showClosed;
   final bool showOpen;
 
-  const CaseList({
+  const CourtCaseList({
     super.key,
     required this.showClosed,
     required this.showOpen,
   });
 
   @override
-  _CaseListState createState() => _CaseListState();
+  _CourtCaseListState createState() => _CourtCaseListState();
 }
 
-class _CaseListState extends State<CaseList> {
+class _CourtCaseListState extends State<CourtCaseList> {
   final GlobalKey<ExpansionTileCardState> cardA = GlobalKey();
   final GlobalKey<ExpansionTileCardState> cardB = GlobalKey();
   late User currentUser;
@@ -32,11 +32,20 @@ class _CaseListState extends State<CaseList> {
   }
 
   Future<void> fetchCases() async {
+    final currentDate = DateTime.now();
+    final currentDateWithoutTime =
+        DateTime(currentDate.year, currentDate.month, currentDate.day);
+    final formattedDate =
+        "${currentDateWithoutTime.year}-${currentDateWithoutTime.month}-${currentDateWithoutTime.day}";
+
     currentUser = FirebaseAuth.instance.currentUser!;
+
     final casesQuery = await FirebaseFirestore.instance
         .collection('cases')
-        .where('lawyerEmail', isEqualTo: currentUser.email)
+        .where('courtEmail', isEqualTo: currentUser.email)
+        .where('nextHearingDate', isEqualTo: formattedDate)
         .get();
+        
     setState(() {
       cases = casesQuery.docs.toList();
     });
@@ -44,11 +53,6 @@ class _CaseListState extends State<CaseList> {
 
   @override
   Widget build(BuildContext context) {
-    final ButtonStyle flatButtonStyle = TextButton.styleFrom(
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(14.0)),
-      ),
-    );
     return ListView.builder(
       itemCount: cases.length,
       itemBuilder: (context, index) {
@@ -67,7 +71,7 @@ class _CaseListState extends State<CaseList> {
           ),
           child: InkWell(
             child: Padding(
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(12.0),
               child: ExpansionTileCard(
                 leading: CircleAvatar(child: Text(caseNumber)),
                 title: Text(
@@ -178,28 +182,28 @@ class _CaseListState extends State<CaseList> {
   }
 }
 
-class CaseListScreen extends StatefulWidget {
+class CourtCaseListScreen extends StatefulWidget {
   final bool showClosed;
   final bool showOpen;
 
-  const CaseListScreen({
+  const CourtCaseListScreen({
     super.key,
     required this.showClosed,
     required this.showOpen,
   });
 
   @override
-  _CaseListScreenState createState() => _CaseListScreenState();
+  _CourtCaseListScreenState createState() => _CourtCaseListScreenState();
 }
 
-class _CaseListScreenState extends State<CaseListScreen> {
+class _CourtCaseListScreenState extends State<CourtCaseListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Case List'),
       ),
-      body: CaseList(showClosed: widget.showClosed, showOpen: widget.showOpen),
+      body: CourtCaseList(showClosed: widget.showClosed, showOpen: widget.showOpen),
     );
   }
 }

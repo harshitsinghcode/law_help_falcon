@@ -1,11 +1,12 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, use_build_context_synchronously
 import 'dart:async';
 import 'dart:ui' as ui;
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-
-import '../undertrial_nav.dart';
+import 'package:law_help/screens/login/login_method.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'ut_map_alert.dart';
 
 class UTMap extends StatefulWidget {
@@ -182,10 +183,24 @@ class _UTMapState extends State<UTMap> {
     loadData();
   }
 
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  void _logout(BuildContext context) async {
+    await _auth.signOut();
+
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.remove('uid');
+    prefs.remove('email');
+    prefs.remove('caseNumber');
+    prefs.remove('isLoggedIn');
+
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => const LoginPage()));
+  }
+
   void loadData() async {
     for (int i = 0; i < _latLang.length; i++) {
       Uint8List? markerIcon =
-          await getBytesFromAssets('assets/images/lawyer.png', 100);
+          await getBytesFromAssets('assets/images/lawyer copy.png', 140);
 
       _markers.add(
         Marker(
@@ -216,6 +231,14 @@ class _UTMapState extends State<UTMap> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Nearby Lawyers"),
+        actions: [
+          IconButton(
+            onPressed: () {
+              _logout(context);
+            },
+            icon: const Icon(Icons.logout),
+          ),
+        ],
       ),
       body: SizedBox(
         height: MediaQuery.of(context).size.height,

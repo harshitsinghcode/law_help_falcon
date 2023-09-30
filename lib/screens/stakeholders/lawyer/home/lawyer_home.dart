@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 
-import '../../../../models/hower_card.dart';
+import '../../../../models/hover_card.dart';
 import 'show_cases.dart';
 
 class LawyerHome extends StatelessWidget {

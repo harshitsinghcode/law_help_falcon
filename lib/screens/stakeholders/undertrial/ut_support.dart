@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:law_help/widgets/buttons/logout_button.dart';
 
+import 'package:flutter/material.dart';
 import 'support screens/mental/niketan.dart';
 import 'support screens/vocational/unnati.dart';
 
@@ -92,8 +91,6 @@ class UTSupport extends StatelessWidget {
                     },
                     gradientColors: const [Colors.purple, Colors.deepPurple],
                   ),
-                  const SizedBox(height: 20),
-                  LogoutButton(),
                   const SizedBox(height: 20),
                   SupportOptionCard(
                     title: 'Mental Health Support',

@@ -1,8 +1,10 @@
 // ignore_for_file: library_private_types_in_public_api, deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:law_help/screens/stakeholders/undertrial/support%20screens/mental/m_yt.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'chat_support.dart';
+import 'm_issues.dart';
 
 class MentalSupportScreen extends StatefulWidget {
   const MentalSupportScreen({Key? key}) : super(key: key);
@@ -111,8 +113,7 @@ class _MentalSupportScreenState extends State<MentalSupportScreen>
         children: <Widget>[
           GestureDetector(
             onTap: () {
-              launch(
-                  "tel:123");
+              launch("tel:123");
             },
             child: _buildSupportCard(
               context,
@@ -237,25 +238,25 @@ class _MentalSupportScreenState extends State<MentalSupportScreen>
               'Common Issues',
               'You are not Alone',
               () {
-                // Navigator.of(context).push(
-                //   MaterialPageRoute(
-                //     builder: (context) => MentalHealthIssuesScreen(),
-                //   ),
-                // );
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const MentalHealthIssuesScreen(),
+                  ),
+                );
               },
               'assets/images/hug.png',
             ),
             const SizedBox(height: 16),
             _buildResourceCard(
               context,
-              'Video Resolution',
+              'Helpful Videos',
               'Hear from the experts',
               () {
-                // Navigator.of(context).push(
-                //   MaterialPageRoute(
-                //     builder: (context) => VideoListScreen(),
-                //   ),
-                // );
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const VideoListScreen(),
+                  ),
+                );
               },
               'assets/images/4404094.png',
             ),
