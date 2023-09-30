@@ -1,5 +1,3 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -12,6 +10,7 @@ class LawyerDocument extends StatelessWidget {
   LawyerDocument({Key? key}) : super(key: key);
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
+
   void _logout(BuildContext context) async {
     await _auth.signOut();
 
@@ -41,25 +40,19 @@ class LawyerDocument extends StatelessWidget {
       ),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(18.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Expanded(
-                      child: _buildCard(context, 'Bail Generation System')),
-                  Expanded(child: _buildCard(context, 'Vakalatnama Generator')),
-                ],
-              ),
-              SizedBox(height: 20.0), // Add some spacing between rows
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Expanded(child: _buildCard(context, 'Prayer Generator')),
-                  Expanded(child: _buildCard(context, 'Card 4')),
-                ],
+              _buildCard(context, 'Bail Generation System',
+                  'Ease of bail generation for the  lawyers'),
+              SizedBox(height: 20.0), // Add some spacing
+              _buildCard(context, 'Vakalatnama Generator',
+                  'Vakalatnama generation for start of case '),
+              SizedBox(height: 20.0), // Add some spacing
+              _buildCard(
+                context,
+                'Prayer Generator',
+                'Prayer generator for end-case proceedings',
               ),
             ],
           ),
@@ -89,24 +82,34 @@ class LawyerDocument extends StatelessWidget {
     }
   }
 
-  Widget _buildCard(BuildContext context, String cardTitle) {
+  Widget _buildCard(BuildContext context, String cardTitle, String subtitle) {
     return GestureDetector(
       onTap: () {
         _handleCardTap(context, cardTitle);
       },
-      child: Card(
-        elevation: 5,
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              Text(
-                cardTitle,
-                style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 10.0),
-              Text('Card content goes here'),
-            ],
+      child: Container(
+        height: 200.0, // Set a fixed height for the cards
+        child: Card(
+          elevation: 5,
+          child: Padding(
+            padding: const EdgeInsets.all(18.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  cardTitle,
+                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(height: 10.0),
+                Text(
+                  subtitle,
+                  style: TextStyle(fontSize: 14.0, color: Colors.grey),
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
           ),
         ),
       ),

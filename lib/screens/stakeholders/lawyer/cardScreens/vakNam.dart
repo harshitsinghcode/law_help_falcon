@@ -168,7 +168,7 @@ the fees. ''',
         child: ListView(
           children: <Widget>[
             const Text(
-              'vakalatnama Details',
+              'Vakalatnama Details',
               style: TextStyle(fontSize: 24.0),
               textAlign: TextAlign.center,
             ),
