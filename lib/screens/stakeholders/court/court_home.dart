@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../../models/hover_card.dart';
-import '../lawyer/home/show_cases.dart';
+import 'court_show_case.dart';
 
 class CourtHome extends StatelessWidget {
   const CourtHome({super.key});
@@ -30,7 +30,7 @@ class CourtHome extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: CaseList(
+              child: CourtCaseList(
                 showClosed: true,
                 showOpen: true,
               ),
@@ -99,10 +99,9 @@ class _DashboardHeaderState extends State<DashboardHeader> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => CaseListScreen(
+        builder: (context) => CourtCaseListScreen(
           showClosed: showClosed,
           showOpen: showOpen,
-          // lawyerEmail: lawyerEmail,
         ),
       ),
     );

@@ -35,7 +35,7 @@ class _CaseListState extends State<CaseList> {
     currentUser = FirebaseAuth.instance.currentUser!;
     final casesQuery = await FirebaseFirestore.instance
         .collection('cases')
-        .where('courtEmail', isEqualTo: currentUser.email)
+        .where('lawyerEmail', isEqualTo: currentUser.email)
         .get();
     setState(() {
       cases = casesQuery.docs.toList();
