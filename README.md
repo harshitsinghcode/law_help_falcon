@@ -29,13 +29,13 @@
 ## 🚀 Getting Started
 Clone the Legal Aid Hub repository from GitHub: https://github.com/your-username/legal-aid-hub.git
 
-## Prerequisites
+## 🧤Prerequisites
 
 - Flutter SDK
 - VS Code or any preferred IDE with Dart and Flutter extensions
 - Android emulator or physical device
   
-## Installation
+## 👨‍💻Installation
 - Open the project folder in your chosen IDE.
 - Run "Flutter: Run Flutter Doctor" to check your system setup.
 - Open the main.dart file and click "Run" to launch the app on your emulator or device.
